@@ -23,6 +23,7 @@ const AddExpense = ({ categories, transactions, fetchTransactionsFn }) => {
     setInputValue("");
     setSelectedCategory("--Please choose a category--");
     setIsLoading("");
+    setSelectedDate("");
     setResponseMsg("");
   }
 
@@ -54,7 +55,6 @@ const AddExpense = ({ categories, transactions, fetchTransactionsFn }) => {
       .then((response) =>  {
         setIsLoading(false);
         setResponseMsg('Expense Added');
-
         setTimeout(() => {
           resetStates();
           fetchTransactionsFn();
