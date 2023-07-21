@@ -4,6 +4,7 @@ import CategoryWise from "./components/CategoryWise";
 import TimeWise from "./components/TimeWise";
 import Metrics from "./components/Metrics";
 import ManageCategories from "./components/ManageCategories";
+import AddExpense from "./components/AddExpense";
 
 import { categoryWiseData, monthWiseData, limits, dailyData } from "./data";
 
@@ -87,7 +88,7 @@ function App() {
   return (
     <div className="container">
       <div className="container-cta">
-        <button className="link">Add Expense</button>
+       <AddExpense categories={categoryWiseData}/>
         <ManageCategories
           addCategoryFn={addCategoryFn}
           categories={categories}
