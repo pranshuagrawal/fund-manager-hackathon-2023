@@ -1,8 +1,8 @@
 .drawer {
   position: fixed;
   top: 0;
-  right: -400px;
-  width: 400px;
+  right: -480px;
+  width: 480px;
   height: 100%;
   background-color: #fff;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);

@@ -53,6 +53,10 @@ button.link {
   color: #f78485 !important;
 }
 
+.icon-blue path {
+  fill: #5675e8 !important;
+}
+
 .icon-green path {
   fill: #6ac6d0 !important;
 }
@@ -117,4 +121,47 @@ button.link {
 
 .drawer-content {
   padding: 0 1rem;
+}
+
+.pl0 {
+  padding-left: 0 !important;
+}
+
+.pr0 {
+  padding-right: 0 !important;
+}
+
+.mt15 {
+  margin-top: 15px;
+}
+
+.input-label {
+  font-size: 14px;
+  color: #a5aaad;
+  font-weight: 600;
+}
+
+input, select {
+  width: 100%;
+  padding: 8px 8px;
+  outline: 0;
+  border: 1px solid #a5aaad;
+  margin-top: 6px;
+  border-radius: 6px;
+}
+
+input {
+  width: 398px !important; 
+}
+
+button.primary {
+  background-color: #5675e8;
+  border: 0;
+  outline: 0;
+  padding: 8px 12px ;
+  border-radius: 6px;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
 }

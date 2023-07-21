@@ -199,3 +199,56 @@ export const DownArrow = (props) => (
     </g>
   </svg>
 );
+
+export const AddIcon = (props) => (
+  <svg version="1.1" width="256" height="256" viewBox="0 0 256 256" {...props}>
+    <defs></defs>
+    <g
+      style={{
+        stroke: "none",
+        strokeWidth: 0,
+        strokeDasharray: "none",
+        strokeLinecap: "butt",
+        strokeLinejoin: "miter",
+        strokeMiterlimit: 10,
+        fill: "none",
+        fillRule: "nonzero",
+        opacity: 1,
+      }}
+      transform="translate(1.4065934065934016 1.4065934065934016) scale(2.81 2.81)"
+    >
+      <path
+        d="M 45 90 c -4.971 0 -9 -4.029 -9 -9 V 9 c 0 -4.971 4.029 -9 9 -9 s 9 4.029 9 9 v 72 C 54 85.971 49.971 90 45 90 z"
+        style={{
+          stroke: "none",
+          strokeWidth: 1,
+          strokeDasharray: "none",
+          strokeLinecap: "butt",
+          strokeLinejoin: "miter",
+          strokeMiterlimit: "10",
+          fill: "rgb(0,0,0)",
+          fillRule: "nonzero",
+          opacity: 1,
+        }}
+        transform=" matrix(1 0 0 1 0 0) "
+        stroke-linecap="round"
+      />
+      <path
+        d="M 81 54 H 9 c -4.971 0 -9 -4.029 -9 -9 s 4.029 -9 9 -9 h 72 c 4.971 0 9 4.029 9 9 S 85.971 54 81 54 z"
+        style={{
+          stroke: "none",
+          strokeWidth: 1,
+          strokeDasharray: "none",
+          strokeLinecap: "butt",
+          strokeLinejoin: "miter",
+          strokeMiterlimit: "10",
+          fill: "rgb(0,0,0)",
+          fillRule: "nonzero",
+          opacity: 1,
+        }}
+        transform=" matrix(1 0 0 1 0 0) "
+        stroke-linecap="round"
+      />
+    </g>
+  </svg>
+);
