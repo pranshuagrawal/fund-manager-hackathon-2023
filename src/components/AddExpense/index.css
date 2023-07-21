@@ -54,6 +54,10 @@
     opacity: 0.6;
 }
 
+.custom-class {
+    width: 104%;
+}
+
 @keyframes pulse {
     0% {
         transform: scale(1);

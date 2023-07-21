@@ -140,7 +140,7 @@ const AddExpense = ({ categories, transactions, fetchTransactionsFn }) => {
               <select
                 name='categories'
                 id='category-select'
-                // className="custom-select"
+                className="custom-class"
                 onFocus={() => setIsFocused(true)}
                 onBlur={() => setIsFocused(false)}
                 onChange={handleCategoryChange}
