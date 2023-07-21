@@ -129,10 +129,12 @@ export function formatDailyData(categories, transactions) {
 }
 
 export const formatMonthlyData = (categories, transactions) => {
+  console.log("transactions:", transactions);
   const categoriesObj = categories.reduce((acc, el) => {
     acc[el.name] = el.type;
     return acc;
   }, {});
+  console.log("categoriesObj:", categoriesObj);
 
   const _transactions = [...transactions];
   _transactions.sort((a, b) =>
@@ -163,6 +165,7 @@ export const formatMonthlyData = (categories, transactions) => {
       });
     }
   });
+  console.log("monthData:", monthData);
 
   return monthData;
 };
