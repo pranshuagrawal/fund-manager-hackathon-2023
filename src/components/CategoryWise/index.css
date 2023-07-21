@@ -10,3 +10,7 @@
 .expense-result {
   margin: 0.2rem 0;
 }
+
+.expense-content {
+  border-top: 1px solid rgba(0, 0, 0, 0.514);
+}
