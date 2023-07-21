@@ -2,42 +2,51 @@
 export const categoryWiseData = {
   spend: [
     {
-      name: "Food",
+      name: 'Food',
       amount: 1200,
+      limit: 2000,
     },
     {
-      name: "Travel",
+      name: 'Travel',
       amount: 3200,
+      limit: 3000,
     },
     {
-      name: "Electricity",
+      name: 'Electricity',
       amount: 2200,
+      limit: 3000,
     },
     {
-      name: "House Rent",
+      name: 'House Rent',
       amount: 5000,
+      limit: 7000,
     },
     {
-      name: "Shopping",
+      name: 'Shopping',
       amount: 2200,
+      limit: 4000,
     },
   ],
   invest: [
     {
-      name: "Fixed Deposits",
+      name: 'Fixed Deposits',
       amount: 5000,
+      limit: 4000,
     },
     {
-      name: "Mutual Funds",
+      name: 'Mutual Funds',
       amount: 3500,
+      limit: 5000,
     },
     {
-      name: "Stocks",
+      name: 'Stocks',
       amount: 5000,
+      limit: 5000,
     },
     {
-      name: "NPS",
+      name: 'NPS',
       amount: 3000,
+      limit: 5000,
     },
   ],
 };
@@ -47,53 +56,53 @@ export const categoryWiseData = {
 export const monthWiseData = {
   spend: [
     {
-      month: "Jan 2023",
+      month: 'Jan 2023',
       amount: 12000,
     },
     {
-      month: "Feb 2023",
+      month: 'Feb 2023',
       amount: 13000,
     },
     {
-      month: "Mar 2023",
+      month: 'Mar 2023',
       amount: 14000,
     },
     {
-      month: "Apr 2023",
+      month: 'Apr 2023',
       amount: 12000,
     },
     {
-      month: "May 2023",
+      month: 'May 2023',
       amount: 15000,
     },
     {
-      month: "Jun 2023",
+      month: 'Jun 2023',
       amount: 13000,
     },
   ],
   invest: [
     {
-      month: "Jan 2023",
+      month: 'Jan 2023',
       amount: 30000,
     },
     {
-      month: "Feb 2023",
+      month: 'Feb 2023',
       amount: 34000,
     },
     {
-      month: "Mar 2023",
+      month: 'Mar 2023',
       amount: 36000,
     },
     {
-      month: "Apr 2023",
+      month: 'Apr 2023',
       amount: 38000,
     },
     {
-      month: "May 2023",
+      month: 'May 2023',
       amount: 35000,
     },
     {
-      month: "Jun 2023",
+      month: 'Jun 2023',
       amount: 40000,
     },
   ],
@@ -129,41 +138,41 @@ export const dailyData = {
 export const limits = {
   spend: [
     {
-      name: "Food",
+      name: 'Food',
       limit: 2000,
     },
     {
-      name: "Travel",
+      name: 'Travel',
       limit: 3000,
     },
     {
-      name: "Electricity",
+      name: 'Electricity',
       limit: 3000,
     },
     {
-      name: "House Rent",
+      name: 'House Rent',
       limit: 7000,
     },
     {
-      name: "Shopping",
+      name: 'Shopping',
       limit: 4000,
     },
   ],
   invest: [
     {
-      name: "Fixed Deposits",
+      name: 'Fixed Deposits',
       limit: 4000,
     },
     {
-      name: "Mutual Funds",
+      name: 'Mutual Funds',
       limit: 5000,
     },
     {
-      name: "Stocks",
+      name: 'Stocks',
       limit: 5000,
     },
     {
-      name: "NPS",
+      name: 'NPS',
       limit: 5000,
     },
   ],
