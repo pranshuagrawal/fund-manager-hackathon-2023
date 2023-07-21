@@ -1,7 +1,7 @@
 export const getExpenditureOption = (spend, handleToggleDrawer) => {
   const expenditureOption = {
     chart: {
-      type: 'column',
+      type: "column",
     },
     // Custom option for templates
     spend,
@@ -10,7 +10,7 @@ export const getExpenditureOption = (spend, handleToggleDrawer) => {
     },
     plotOptions: {
       series: {
-        cursor: 'pointer',
+        cursor: "pointer",
         events: {
           click: handleToggleDrawer,
         },
@@ -22,37 +22,37 @@ export const getExpenditureOption = (spend, handleToggleDrawer) => {
       shared: true,
     },
     xAxis: {
-      type: 'category',
+      type: "category",
       title: {
-        text: 'Expenditure Categories',
+        text: "Expenditure Categories",
       },
       categories: spend.map((item) => item.name),
     },
     yAxis: [
       {
         title: {
-          text: 'Amount',
+          text: "Amount",
         },
       },
     ],
     series: [
       {
-        color: 'rgba(88, 105, 241, 0.3)',
+        color: "rgba(88, 105, 241, 0.3)",
         pointPlacement: -0.2,
-        linkedTo: 'main',
+        linkedTo: "main",
         data: spend.map((item) => item.limit),
-        name: 'limit',
+        name: "limit",
       },
       {
-        color: '#5675e8',
-        name: 'expenditure',
-        id: 'main',
+        color: "#5675e8",
+        name: "expenditure",
+        id: "main",
         dataLabels: [
           {
             enabled: true,
             inside: true,
             style: {
-              fontSize: '16px',
+              fontSize: "16px",
             },
           },
         ],
@@ -69,8 +69,8 @@ export const getExpenditureOption = (spend, handleToggleDrawer) => {
 
   const expenditureChildren = (
     <>
-      <h2 className='drawer-heading'>Drawer Expense Content</h2>
-      <p className='drawer-content'>This is the content of the drawer.</p>
+      <h2 className="drawer-heading">Drawer Expense Content</h2>
+      <p className="drawer-content">This is the content of the drawer.</p>
     </>
   );
 
@@ -80,7 +80,7 @@ export const getExpenditureOption = (spend, handleToggleDrawer) => {
 export const getInvestmentOption = (invest, handleToggleDrawer) => {
   const investmentOption = {
     chart: {
-      type: 'column',
+      type: "column",
     },
     invest,
     legend: {
@@ -94,37 +94,37 @@ export const getInvestmentOption = (invest, handleToggleDrawer) => {
       shared: true,
     },
     xAxis: {
-      type: 'category',
+      type: "category",
       title: {
-        text: 'Investment Categories',
+        text: "Investment Categories",
       },
       categories: invest.map((item) => item.name),
     },
     yAxis: [
       {
         title: {
-          text: 'Amount',
+          text: "Amount",
         },
       },
     ],
     series: [
       {
-        color: 'rgba(88, 105, 241, 0.3)',
+        color: "rgba(88, 105, 241, 0.3)",
         pointPlacement: -0.2,
-        linkedTo: 'main',
+        linkedTo: "main",
         data: invest.map((item) => item.limit),
-        name: 'limit',
+        name: "limit",
       },
       {
-        color: '#5675e8',
-        name: 'investment',
-        id: 'main',
+        color: "#5675e8",
+        name: "investment",
+        id: "main",
         dataLabels: [
           {
             enabled: true,
             inside: true,
             style: {
-              fontSize: '16px',
+              fontSize: "16px",
             },
           },
         ],
@@ -133,7 +133,7 @@ export const getInvestmentOption = (invest, handleToggleDrawer) => {
     ],
     plotOptions: {
       series: {
-        cursor: 'pointer',
+        cursor: "pointer",
         events: {
           click: handleToggleDrawer,
         },
@@ -151,8 +151,8 @@ export const getInvestmentOption = (invest, handleToggleDrawer) => {
 
   const investmenteChildren = (
     <>
-      <h2 className='drawer-heading'>Drawer Investment Content</h2>
-      <p className='drawer-content'>This is the content of the drawer.</p>
+      <h2 className="drawer-heading">Drawer Investment Content</h2>
+      <p className="drawer-content">This is the content of the drawer.</p>
     </>
   );
 

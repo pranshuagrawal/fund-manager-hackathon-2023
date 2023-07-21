@@ -76,7 +76,47 @@ const ManageCategories = ({ addCategoryFn, categories }) => {
             </div>
           )}
 
-          {JSON.stringify(categories)}
+          <div>
+            <h5>Expense Categories</h5>
+
+            <div className="list-container">
+              {categories &&
+                categories.data &&
+                categories.data
+                  .filter((category) => category.type === "expenditure")
+                  .map((category) => (
+                    <div className="list-container-row">
+                      <div className="list-container-column">
+                        {category.name}
+                      </div>
+                      <div className="list-container-column">
+                        {category.limit}
+                      </div>
+                    </div>
+                  ))}
+            </div>
+          </div>
+
+          <div className="mt30">
+            <h5>Investment Categories</h5>
+
+            <div className="list-container">
+              {categories &&
+                categories.data &&
+                categories.data
+                  .filter((category) => category.type === "investment")
+                  .map((category) => (
+                    <div className="list-container-row">
+                      <div className="list-container-column">
+                        {category.name}
+                      </div>
+                      <div className="list-container-column">
+                        {category.limit}
+                      </div>
+                    </div>
+                  ))}
+            </div>
+          </div>
         </div>
       </Drawer>
     </>

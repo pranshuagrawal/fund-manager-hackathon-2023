@@ -135,6 +135,10 @@ button.link {
   margin-top: 15px;
 }
 
+.mt30 {
+  margin-top: 30px;
+}
+
 .input-label {
   font-size: 14px;
   color: #a5aaad;
@@ -164,4 +168,26 @@ button.primary {
   font-size: 14px;
   font-weight: 600;
   cursor: pointer;
+}
+
+.list-container-row {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #e8edf0;
+  padding: 5px 3px;
+}
+.list-container-column {
+  flex: 1;
+  color: #333
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 20px;
+}
+
+.logo {
+  height: 40px;
 }

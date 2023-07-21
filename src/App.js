@@ -1,5 +1,5 @@
 import "./App.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import CategoryWise from "./components/CategoryWise";
 import TimeWise from "./components/TimeWise";
 import Metrics from "./components/Metrics";
@@ -85,8 +85,19 @@ function App() {
       });
   };
 
+  useEffect(() => {
+    fetchCategoriesFn();
+  }, []);
+
   return (
     <div className="container">
+      <div className="logo-container">
+        <img
+          className="logo"
+          src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Paytm_payments_bank.svg/2560px-Paytm_payments_bank.svg.png"
+        />
+      </div>
+
       <div className="container-cta">
        <AddExpense categories={categoryWiseData}/>
         <ManageCategories
