@@ -1,131 +1,31 @@
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
+import { useState } from 'react';
+import Drawer from '../Drawer';
+import { getExpenditureOption, getInvestmentOption } from './chartOptions';
+
 const CategoryWise = ({ data: { spend, invest } }) => {
-  const expenditureOption = {
-    chart: {
-      type: 'column',
-    },
-    // Custom option for templates
-    spend,
-    title: {
-      text: null,
-    },
-    plotOptions: {
-      series: {
-        grouping: false,
-        borderWidth: 0,
-      },
-    },
-    tooltip: {
-      shared: true,
-    },
-    xAxis: {
-      type: 'category',
-      title: {
-        text: 'Expenditure Categories',
-      },
-      categories: spend.map((item) => item.name),
-    },
-    yAxis: [
-      {
-        title: {
-          text: 'Amount',
-        },
-      },
-    ],
-    series: [
-      {
-        color: 'rgba(88, 105, 241, 0.3)',
-        pointPlacement: -0.2,
-        linkedTo: 'main',
-        data: spend.map((item) => item.amount),
-        name: 'expenditure',
-      },
-      {
-        color: '#5675e8',
-        name: 'limit',
-        id: 'main',
-        dataLabels: [
-          {
-            enabled: true,
-            inside: true,
-            style: {
-              fontSize: '16px',
-            },
-          },
-        ],
-        data: spend.map((item) => item.limit),
-      },
-    ],
-    exporting: {
-      allowHTML: true,
-    },
-    credits: {
-      enabled: false
-    }
+  const [isDrawerOpen, setIsDrawerOpen] = useState({
+    expense: false,
+    invest: false,
+  });
+
+  const handleToggleExpenseDrawer = () => {
+    setIsDrawerOpen((prev) => ({ ...prev, expense: !prev.expense }));
   };
-  const investmentOption = {
-    chart: {
-      type: 'column',
-    },
-    spend,
-    title: {
-      text: null,
-    },
-    plotOptions: {
-      series: {
-        grouping: false,
-        borderWidth: 0,
-      },
-    },
-    tooltip: {
-      shared: true,
-    },
-    xAxis: {
-      type: 'category',
-      title: {
-        text: 'Expenditure Categories',
-      },
-      categories: invest.map((item) => item.name),
-    },
-    yAxis: [
-      {
-        title: {
-          text: 'Amount',
-        },
-      },
-    ],
-    series: [
-      {
-        color: 'rgba(88, 105, 241, 0.3)',
-        pointPlacement: -0.2,
-        linkedTo: 'main',
-        data: invest.map((item) => item.amount),
-        name: 'expenditure',
-      },
-      {
-        color: '#5675e8',
-        name: 'limit',
-        id: 'main',
-        dataLabels: [
-          {
-            enabled: true,
-            inside: true,
-            style: {
-              fontSize: '16px',
-            },
-          },
-        ],
-        data: invest.map((item) => item.limit),
-      },
-    ],
-    exporting: {
-      allowHTML: true,
-    },
-    credits: {
-      enabled: false
-    }
+  const handleToggleInvestDrawer = () => {
+    setIsDrawerOpen((prev) => ({ ...prev, invest: !prev.invest }));
   };
+
+  const { expenditureOption, expenditureChildren } = getExpenditureOption(
+    spend,
+    handleToggleExpenseDrawer
+  );
+  const { investmentOption, investmenteChildren } = getInvestmentOption(
+    invest,
+    handleToggleInvestDrawer
+  );
+
   return (
     <div className='row'>
       <div className='column'>
@@ -143,6 +43,15 @@ const CategoryWise = ({ data: { spend, invest } }) => {
           <HighchartsReact highcharts={Highcharts} options={investmentOption} />
         </div>
       </div>
+      <Drawer
+        isOpen={isDrawerOpen.expense || isDrawerOpen.invest}
+        onClose={() => {
+          setIsDrawerOpen({ expense: false, invest: false });
+        }}
+      >
+        {isDrawerOpen.expense && expenditureChildren}
+        {isDrawerOpen.invest && investmenteChildren}
+      </Drawer>
     </div>
   );
 };
