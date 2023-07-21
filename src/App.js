@@ -34,11 +34,9 @@ function App() {
       </div>
       <div>
         <Drawer isOpen={isDrawerOpen} onClose={() => setIsDrawerOpen(false)}>
-          <h2>Drawer Content</h2>
-          <p>This is the content of the drawer.</p>
-          <div className="isko drawer me daalna h">
-            <AddExpense categories={categoryWiseData} />
-          </div>
+          <h2 className='drawer-heading'>Drawer Content</h2>
+          <p className='drawer-content'>This is the content of the drawer.</p>
+          <AddExpense categories={categoryWiseData} />
         </Drawer>
       </div>
     </div>

@@ -92,3 +92,11 @@ body {
   font-weight: 600;
   margin-bottom: 30px;
 }
+
+.drawer-heading {
+  padding: 0 1rem;
+}
+
+.drawer-content {
+  padding: 0 1rem;
+}
