@@ -3,8 +3,12 @@ import Highcharts from 'highcharts'
 import HighchartsReact from 'highcharts-react-official'
 import Historical from './Historical';
 const DailyWise = ({data, historicalData, limits}) => {
-  const categories = historicalData.spend.map(el => dayjs(el.date).format('DD MMM YY'))
-  const values = historicalData.spend.map(el => el.amount)
+  const dailyData = [...historicalData.spend].filter(d => dayjs(new Date(d.date)).format("YYYY-MM") ===  dayjs(new Date()).format("YYYY-MM"));
+   dailyData.sort((a, b) =>
+    new Date(a.date).getTime() > new Date(b.date).getTime() ? 1 : -1
+  );
+  const categories = dailyData.map(el => dayjs(el.date).format('DD MMM YY'))
+  const values = dailyData.map(el => el.amount)
   const options = {
     chart: {
         type: 'spline'
