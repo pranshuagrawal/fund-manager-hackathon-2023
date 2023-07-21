@@ -99,6 +99,33 @@ export const monthWiseData = {
   ],
 };
 
+export const dailyData = {
+  spend: [
+    { date: "07-01-2023", amount: 1000 },
+    { date: "07-02-2023", amount: 800 },
+    { date: "07-03-2023", amount: 700 },
+    { date: "07-04-2023", amount: 1100 },
+    { date: "07-05-2023", amount: 1000 },
+    { date: "07-06-2023", amount: 700 },
+    { date: "07-07-2023", amount: 900 },
+    { date: "07-08-2023", amount: 1300 },
+    { date: "07-09-2023", amount: 1200 },
+    { date: "07-10-2023", amount: 1000 },
+  ],
+  invest: [
+    { date: "07-01-2023", amount: 800 },
+    { date: "07-02-2023", amount: 1000 },
+    { date: "07-03-2023", amount: 900 },
+    { date: "07-04-2023", amount: 1200 },
+    { date: "07-05-2023", amount: 800 },
+    { date: "07-06-2023", amount: 700 },
+    { date: "07-07-2023", amount: 900 },
+    { date: "07-08-2023", amount: 1300 },
+    { date: "07-09-2023", amount: 1200 },
+    { date: "07-10-2023", amount: 1000 },
+  ],
+};
+
 export const limits = {
   spend: [
     {

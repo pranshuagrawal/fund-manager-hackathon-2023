@@ -1,14 +1,34 @@
 import Highcharts from 'highcharts'
 import HighchartsReact from 'highcharts-react-official'
 
-const DailyWise = () => {
-
+const DailyWise = ({data, limits}) => {
+  const categories = data.spend.map(el => el.date)
+  const values = data.spend.map(el => el.amount)
   const options = {
+    chart: {
+        type: 'spline'
+    },
     title: {
       text: null
     },
+    yAxis: {
+      title: {
+        text: "Amount"
+      }
+    },
+    xAxis: {
+        categories,
+        accessibility: {
+            description: 'Months of the year'
+        }
+    },
+    legends: {
+      enabled: false
+    },
     series: [{
-      data: [1, 2, 3]
+      name: "Daily Spent",
+      data: values,
+      color: "#5675e8"
     }],
     credits: {
       enabled: false
@@ -19,10 +39,12 @@ const DailyWise = () => {
     <div className="row">
       <div className="column">
         <div className="heading">Daily Expenditure</div>
-        <div className="graph-container"><HighchartsReact
-          highcharts={Highcharts}
-          options={options}
-        /></div>
+        <div className="graph-container">
+          <HighchartsReact
+            highcharts={Highcharts}
+            options={options}
+          />
+        </div>
       </div>
       <div className="column">
         <div className="heading">Daily Investment</div>
