@@ -1,7 +1,7 @@
 import Highcharts from 'highcharts'
 import HighchartsReact from 'highcharts-react-official'
-
-const DailyWise = ({data, limits}) => {
+import Historical from './Historical';
+const DailyWise = ({data, historicalData, limits}) => {
   const categories = data.spend.map(el => el.date)
   const values = data.spend.map(el => el.amount)
   const options = {
@@ -48,7 +48,7 @@ const DailyWise = ({data, limits}) => {
       </div>
       <div className="column">
         <div className="heading">Daily Investment</div>
-        <div className="graph-container">Graph</div>
+        <div className="graph-container"><Historical data={historicalData} limits={limits} /></div>
       </div>
     </div>
   )

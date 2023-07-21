@@ -1,7 +1,7 @@
 import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
 
-const MonthWise = ({ data, limits }) => {
+const Historical = ({ data, limits }) => {
   const { invest, spend } = data;
 
   const xAxisData = invest.map(item => {
@@ -30,6 +30,7 @@ const MonthWise = ({ data, limits }) => {
             symbol: 'square'
         },
         data: yAxisDataInvest,
+        color: "#38adb9"
       },
       {
         name: 'Expenses',
@@ -37,6 +38,7 @@ const MonthWise = ({ data, limits }) => {
             symbol: 'square'
         },
         data: yAxisDataSpend,
+        color: "#5675e8"
       },
     ],
     xAxis: {
@@ -47,7 +49,7 @@ const MonthWise = ({ data, limits }) => {
     },
     yAxis: {
       title: {
-        text: "Expenses",
+        text: "Amount",
       },
       labels: {
         format: "₹{value}",
@@ -62,4 +64,4 @@ const MonthWise = ({ data, limits }) => {
   );
 };
 
-export default MonthWise;
+export default Historical;
