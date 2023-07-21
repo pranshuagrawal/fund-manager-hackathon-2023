@@ -188,11 +188,11 @@ export const expenseDrawerContent = (spendList, index) => {
             <div>
               <div className='expense-result color-red'>
                 You have already overspent{' '}
-                {inr(expense?.amount - expense?.limit)}
+                {inr(expense?.amount - expense?.limit)}.
               </div>
               <div className='expense-advice'>
                 Make sure to balance this amount by spending less in other
-                categories
+                categories.
               </div>
             </div>
           )}
@@ -229,10 +229,10 @@ export const investDrawerContent = (investList, index) => {
             <div>
               <div className='expense-result color-green'>
                 Nice, you have already invested{' '}
-                {inr(invest?.amount - invest?.limit)} more in ${invest?.name}
+                {inr(invest?.amount - invest?.limit)} more in ${invest?.name}.
               </div>
               <div className='expense-advice'>
-                Make sure to keep investing in other investment categories
+                Make sure to keep investing in other investment categories.
               </div>
             </div>
           )}
