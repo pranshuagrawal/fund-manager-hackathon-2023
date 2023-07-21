@@ -2,6 +2,7 @@ import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
 
 const Historical = ({ data, limits }) => {
+  console.log("data:", data);
   const { invest, spend } = data;
 
   const xAxisData = invest.map(item => {
