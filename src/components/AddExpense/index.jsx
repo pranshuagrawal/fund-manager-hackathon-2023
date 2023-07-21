@@ -97,6 +97,13 @@ const AddExpense = ({ categories, transactions, fetchTransactionsFn }) => {
     fetchTransactionsFn();
   }, [])
 
+  const sortedTransactions = useMemo(() => {
+    if(!transactions.data) return[];
+    const d = [...transactions.data];
+    d.sort((a, b) => new Date(a.date).getTime() > new Date(b.date).getTime() ? -1 : 1);
+    return d;
+  }, [transactions.data])
+
   return (
     <>
       <button className="link-whitebg" onClick={handleToggleDrawer}>
@@ -165,10 +172,7 @@ const AddExpense = ({ categories, transactions, fetchTransactionsFn }) => {
           <div>
             <h5>Past Expenses</h5>
             <div className="list-container">
-              {transactions &&
-                transactions.data &&
-                transactions.data
-                  .map((transaction) => (
+              {sortedTransactions.map((transaction) => (
                     <div className="list-container-row">
                       <div className="list-container-column">
                         {transaction.amount}
