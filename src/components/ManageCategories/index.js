@@ -31,7 +31,7 @@ const ManageCategories = ({ addCategoryFn, categories }) => {
 
   return (
     <>
-      <button className="link" onClick={handleToggleDrawer}>
+      <button className="link-whitebg" onClick={handleToggleDrawer}>
         Manage Categories
       </button>
       <Drawer isOpen={isDrawerOpen} onClose={() => setIsDrawerOpen(false)}>

@@ -1,6 +1,16 @@
-import { inr, round, inra } from "../../methods";
+import { inr, round, inra, rounda } from "../../methods";
 import { UpArrow, DownArrow } from "../../icons/icons";
-const Metrics = ({ data, limits }) => {
+const Metrics = ({ data, monthWiseData }) => {
+  const thisMonthExpenditure =
+    monthWiseData.spend[monthWiseData.spend.length - 1];
+  const prevMonthExpenditure =
+    monthWiseData.spend[monthWiseData.spend.length - 2];
+
+  const thisMonthInvestment =
+    monthWiseData.invest[monthWiseData.invest.length - 1];
+  const prevMonthInvestment =
+    monthWiseData.invest[monthWiseData.invest.length - 2];
+
   const totalExpenditure = data.spend.reduce(
     (acc, el) => ({
       limit: el.limit + acc.limit,
@@ -126,6 +136,73 @@ const Metrics = ({ data, limits }) => {
                 mostLeastInvestedCategory.limit
             )}
             %
+          </div>
+        </div>
+        <div className="metrics-container">
+          <div className="metrics-heading">
+            Expenditure - This Month vs Prev
+          </div>
+          <div className="metrics-value">
+            {rounda(
+              ((thisMonthExpenditure.amount - prevMonthExpenditure.amount) *
+                100) /
+                prevMonthExpenditure.amount
+            )}
+            %
+          </div>
+          <div className="metrics-subtext">
+            {thisMonthExpenditure.amount > prevMonthExpenditure.amount ? (
+              <>
+                <UpArrow
+                  className="metric-icon icon-red"
+                  height="20px"
+                  width="20px"
+                />{" "}
+                Went Up
+              </>
+            ) : (
+              <>
+                <DownArrow
+                  className="metric-icon icon-green"
+                  height="20px"
+                  width="20px"
+                />{" "}
+                Came Down
+              </>
+            )}
+          </div>
+        </div>
+
+        <div className="metrics-container">
+          <div className="metrics-heading">Investment - This Month vs Prev</div>
+          <div className="metrics-value">
+            {rounda(
+              ((thisMonthInvestment.amount - prevMonthInvestment.amount) *
+                100) /
+                prevMonthInvestment.amount
+            )}
+            %
+          </div>
+          <div className="metrics-subtext">
+            {thisMonthInvestment.amount < prevMonthInvestment.amount ? (
+              <>
+                <UpArrow
+                  className="metric-icon icon-green"
+                  height="20px"
+                  width="20px"
+                />{" "}
+                Went Up
+              </>
+            ) : (
+              <>
+                <DownArrow
+                  className="metric-icon icon-red"
+                  height="20px"
+                  width="20px"
+                />{" "}
+                Came Down
+              </>
+            )}
           </div>
         </div>
       </div>

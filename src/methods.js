@@ -13,3 +13,4 @@ export const inra = (num) =>
   });
 
 export const round = (value) => Math.round(value * 100) / 100;
+export const rounda = (value) => Math.round(Math.abs(value) * 100) / 100;

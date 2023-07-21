@@ -73,7 +73,7 @@ const AddExpense = ({ categories }) => {
 
   return (
     <>
-      <button className="link" onClick={handleToggleDrawer}>
+      <button className="link-whitebg" onClick={handleToggleDrawer}>
         Add Expense
       </button>
       <Drawer isOpen={isDrawerOpen} onClose={() => setIsDrawerOpen(false)}>

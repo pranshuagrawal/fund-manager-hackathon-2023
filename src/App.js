@@ -91,22 +91,23 @@ function App() {
 
   return (
     <div className="container">
-      <div className="logo-container">
-        <img
-          className="logo"
-          src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Paytm_payments_bank.svg/2560px-Paytm_payments_bank.svg.png"
-        />
-      </div>
-
       <div className="container-cta">
-       <AddExpense categories={categoryWiseData}/>
-        <ManageCategories
-          addCategoryFn={addCategoryFn}
-          categories={categories}
-        />
+        <div className="logo-container">
+          <img
+            className="logo"
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Paytm_payments_bank.svg/2560px-Paytm_payments_bank.svg.png"
+          />
+        </div>
+        <div>
+          <AddExpense categories={categoryWiseData} />
+          <ManageCategories
+            addCategoryFn={addCategoryFn}
+            categories={categories}
+          />
+        </div>
       </div>
       <div className="container-inner">
-        <Metrics data={categoryWiseData} limits={limits} />
+        <Metrics data={categoryWiseData} monthWiseData={monthWiseData} />
       </div>
       <div className="container-inner">
         <CategoryWise data={categoryWiseData} />
