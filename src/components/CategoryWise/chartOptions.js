@@ -48,9 +48,12 @@ export const getExpenditureOption = (
       {
         color: 'rgba(88, 105, 241, 0.3)',
         pointPlacement: -0.2,
-        linkedTo: 'main',
+        marker: {
+          enabled: true,
+          symbol: 'square'
+        },
         data: spend.map((item) => item.limit),
-        name: 'limit',
+        name: 'limits',
       },
       {
         color: '#5675e8',
@@ -125,11 +128,14 @@ export const getInvestmentOption = (
     ],
     series: [
       {
-        color: 'rgba(88, 105, 241, 0.3)',
+        name: 'limits',
         pointPlacement: -0.2,
-        linkedTo: 'main',
+        marker: {
+          enabled: true,
+          symbol: 'square'
+        },
+        color: 'rgba(88, 105, 241, 0.3)',
         data: invest.map((item) => item.limit),
-        name: 'limit',
       },
       {
         color: '#5675e8',

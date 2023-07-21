@@ -184,7 +184,7 @@ const Metrics = ({ data, monthWiseData }) => {
             %
           </div>
           <div className="metrics-subtext">
-            {thisMonthInvestment?.amount < prevMonthInvestment?.amount ? (
+            {thisMonthInvestment?.amount > prevMonthInvestment?.amount ? (
               <>
                 <UpArrow
                   className="metric-icon icon-green"
