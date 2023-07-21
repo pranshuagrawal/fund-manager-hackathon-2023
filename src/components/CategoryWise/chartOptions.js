@@ -241,3 +241,30 @@ export const investDrawerContent = (investList, index) => {
     </>
   );
 };
+
+export const gptDrawerContent = (investmentGptMessage) => {
+  return (
+    <>
+      <h2 className='drawer-heading'>Investment AI Assistant</h2>
+      <div className='drawer-content gpt-text'>
+        {/* Some other investment options in India include: 1. Gold: Consider
+        investing in physical gold or gold ETFs for long-term wealth
+        preservation. 2. Real Estate: Purchase properties or invest in real
+        estate investment trusts (REITs) to benefit from potential capital
+        appreciation and rental income. 3. Government Bonds: Invest in
+        government bonds like Sovereign Gold Bonds or National Savings
+        Certificates (NSCs) for secure returns. 4. Corporate Bonds: Explore
+        investing in corporate bonds issued by reputed companies for fixed
+        income. 5. Initial Public Offerings (IPOs): Participate in IPOs of
+        promising companies to potentially benefit from their growth. 6.
+        Peer-to-Peer Lending: Invest through online lending platforms and earn
+        interest by lending money to individuals or small businesses. 7.
+        Commodities: Consider investing in commodities like crude oil, silver,
+        or agricultural products using commodity futures. Note: Please conduct
+        thorough research and seek professional advice before investing in any
+        financial product. */}
+        {investmentGptMessage ? investmentGptMessage : 'Loading...'}
+      </div>
+    </>
+  );
+};

@@ -1,10 +1,10 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { AddIcon } from "../../icons/icons";
 import { addTransactions } from "../../db";
 import Drawer from "../Drawer";
 import "./index.css";
 
-const AddExpense = ({ categories }) => {
+const AddExpense = ({ categories, transactions, fetchTransactionsFn }) => {
   const [, setIsFocused] = useState(false);
 
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -23,6 +23,7 @@ const AddExpense = ({ categories }) => {
     setInputValue("");
     setSelectedCategory("--Please choose a category--");
     setIsLoading("");
+    setSelectedDate("");
     setResponseMsg("");
   }
 
@@ -45,7 +46,7 @@ const AddExpense = ({ categories }) => {
 
   const submitHandler = () => {
     const payload = {
-      amount: inputValue,
+      amount: parseInt(inputValue, 10),
       category: selectedCategory,
       date: selectedDate
     };
@@ -54,9 +55,9 @@ const AddExpense = ({ categories }) => {
       .then((response) =>  {
         setIsLoading(false);
         setResponseMsg('Expense Added');
-
         setTimeout(() => {
           resetStates();
+          fetchTransactionsFn();
         }, 3000);
       })
       .catch((error) => {
@@ -75,11 +76,12 @@ const AddExpense = ({ categories }) => {
       !selectedCategory ||
       selectedCategory === "--Please choose a category--" ||
       !inputValue ||
-      error
+      error ||
+      !selectedDate
     )
       return true;
     return false;
-  }, [selectedCategory, inputValue, error]);
+  }, [selectedCategory, inputValue, error, selectedDate]);
 
   const dateChangeHandler = (event) => {
     const value = event.target.value;
@@ -90,6 +92,17 @@ const AddExpense = ({ categories }) => {
     setIsAddCategoryOpen((s) => !s);
     resetStates();
   };
+
+  useEffect(() => {
+    fetchTransactionsFn();
+  }, [])
+
+  const sortedTransactions = useMemo(() => {
+    if(!transactions.data) return[];
+    const d = [...transactions.data];
+    d.sort((a, b) => new Date(a.date).getTime() > new Date(b.date).getTime() ? -1 : 1);
+    return d;
+  }, [transactions.data])
 
   return (
     <>
@@ -156,6 +169,24 @@ const AddExpense = ({ categories }) => {
               </div>
             </div>
           )}
+          <div>
+            <h5>Past Expenses</h5>
+            <div className="list-container">
+              {sortedTransactions.map((transaction) => (
+                    <div className="list-container-row">
+                      <div className="list-container-column">
+                        {transaction.amount}
+                      </div>
+                      <div className="list-container-column">
+                        {transaction.category}
+                      </div>
+                      <div className="list-container-column">
+                        {transaction.date}
+                      </div>
+                    </div>
+                  ))}
+            </div>
+          </div>
         </div>
       </Drawer>
     </>

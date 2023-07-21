@@ -100,7 +100,7 @@ function App() {
           />
         </div>
         <div>
-          <AddExpense categories={categories} />
+          <AddExpense categories={categories} transactions={transactions} fetchTransactionsFn={fetchTransactionsFn}/>
           <ManageCategories
             addCategoryFn={addCategoryFn}
             categories={categories}
