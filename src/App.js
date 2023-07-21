@@ -6,7 +6,7 @@ import Metrics from './components/Metrics';
 import ManageCategories from './components/ManageCategories';
 import AddExpense from './components/AddExpense';
 
-import { categoryWiseData, monthWiseData, limits, dailyData } from './data';
+import { monthWiseData, limits, dailyData } from './data';
 
 import {
   addCategory,
@@ -14,6 +14,7 @@ import {
   addTransactions,
   fetchTransactions,
 } from './db';
+import { formatCategoryWiseData, formatDailyData } from './methods';
 
 function App() {
   const [categories, setCategories] = useState({
@@ -26,6 +27,21 @@ function App() {
     error: null,
     loading: false,
   });
+
+  const [categoryWiseData, setCategoryWiseData] = useState({
+    spend: [],
+    invest: [],
+  });
+  const [dailyData, setDailyData] = useState({ spend: [], invest: [] });
+
+  useEffect(() => {
+    if (categories.data.length !== 0 && transactions.data.length !== 0) {
+      setCategoryWiseData(
+        formatCategoryWiseData(categories.data, transactions.data)
+      );
+      setDailyData(formatDailyData(categories.data, transactions.data));
+    }
+  }, [categories, transactions]);
 
   const addCategoryFn = (obj) => {
     addCategory(obj).then(fetchCategoriesFn);
@@ -87,6 +103,7 @@ function App() {
 
   useEffect(() => {
     fetchCategoriesFn();
+    fetchTransactionsFn();
   }, []);
 
   return (
@@ -94,13 +111,17 @@ function App() {
       <div className='container-cta'>
         <div className='logo-container'>
           <img
-            className="logo"
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Paytm_payments_bank.svg/2560px-Paytm_payments_bank.svg.png"
+            className='logo'
+            src='https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Paytm_payments_bank.svg/2560px-Paytm_payments_bank.svg.png'
             alt='paytm logo'
           />
         </div>
         <div>
-          <AddExpense categories={categories} transactions={transactions} fetchTransactionsFn={fetchTransactionsFn}/>
+          <AddExpense
+            categories={categories}
+            transactions={transactions}
+            fetchTransactionsFn={fetchTransactionsFn}
+          />
           <ManageCategories
             addCategoryFn={addCategoryFn}
             categories={categories}

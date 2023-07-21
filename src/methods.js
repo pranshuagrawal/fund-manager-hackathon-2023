@@ -21,7 +21,7 @@ export function formatCategoryWiseData(categories, transactions) {
     invest: [],
   };
 
-  const mergedTransactions = transactions.reduce((merged, transaction) => {
+  const mergedTransactions = transactions?.reduce((merged, transaction) => {
     const existingTransaction = merged.find(
       (item) => item.category === transaction.category
     );
@@ -64,7 +64,7 @@ export function formatDailyData(categories, transactions) {
     invest: [],
   };
 
-  const mergedTransactions = transactions.reduce((merged, transaction) => {
+  const mergedTransactions = transactions?.reduce((merged, transaction) => {
     const existingTransaction = merged.find(
       (item) =>
         item.category === transaction.category && item.date === transaction.date
@@ -79,7 +79,7 @@ export function formatDailyData(categories, transactions) {
     return merged;
   }, []);
 
-  const groupTransactionsByDate = mergedTransactions.reduce(
+  const groupTransactionsByDate = mergedTransactions?.reduce(
     (result, transaction) => {
       const date = new Date(transaction.date);
       const formattedDate = `${String(date.getMonth() + 1).padStart(

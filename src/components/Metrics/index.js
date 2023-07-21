@@ -1,5 +1,5 @@
-import { inr, round, inra, rounda } from "../../methods";
-import { UpArrow, DownArrow } from "../../icons/icons";
+import { inr, round, inra, rounda } from '../../methods';
+import { UpArrow, DownArrow } from '../../icons/icons';
 const Metrics = ({ data, monthWiseData }) => {
   const thisMonthExpenditure =
     monthWiseData.spend[monthWiseData.spend.length - 1];
@@ -27,79 +27,79 @@ const Metrics = ({ data, monthWiseData }) => {
     { limit: 0, amount: 0 }
   );
 
-  const mostOverspentSpentCategory = data.spend.reduce(function (
-    prev,
-    current
-  ) {
-    return prev.amount - prev.limit > current.amount - current.limit
-      ? prev
-      : current;
-  });
+  const mostOverspentSpentCategory = data.spend.reduce(
+    function (prev, current) {
+      return prev.amount - prev.limit > current.amount - current.limit
+        ? prev
+        : current;
+    },
+    { limit: 0, amount: 0 }
+  );
 
-  const mostLeastInvestedCategory = data.invest.reduce(function (
-    prev,
-    current
-  ) {
-    return prev.amount - prev.limit < current.amount - current.limit
-      ? prev
-      : current;
-  });
+  const mostLeastInvestedCategory = data.invest.reduce(
+    function (prev, current) {
+      return prev.amount - prev.limit < current.amount - current.limit
+        ? prev
+        : current;
+    },
+    { limit: 0, amount: 0 }
+  );
 
   return (
-    <div className="row">
-      <div className="column metrics">
-        <div className="metrics-container">
+    <div className='row'>
+      <div className='column metrics'>
+        <div className='metrics-container'>
           <div>
-            <div className="metrics-heading">Expenditure - This Month</div>
-            <div className="metrics-value">{inr(totalExpenditure.amount)}</div>
-            <div className="metrics-subtext">
+            <div className='metrics-heading'>Expenditure - This Month</div>
+            <div className='metrics-value'>{inr(totalExpenditure.amount)}</div>
+            <div className='metrics-subtext'>
               {totalExpenditure.amount < totalExpenditure.limit ? (
-                <span className="color-green">
-                  Remaining{" "}
+                <span className='color-green'>
+                  Remaining{' '}
                   {inra(totalExpenditure.limit - totalExpenditure.amount)}
                 </span>
               ) : (
-                <span className="color-red">
-                  Overspending{" "}
+                <span className='color-red'>
+                  Overspending{' '}
                   {inra(totalExpenditure.limit - totalExpenditure.amount)}
                 </span>
               )}
             </div>
           </div>
         </div>
-        <div className="metrics-container">
-          <div className="metrics-heading">Investment - This Month</div>
-          <div className="metrics-value">{inr(totalInvestment.amount)}</div>
-          <div className="metrics-subtext">
+        <div className='metrics-container'>
+          <div className='metrics-heading'>Investment - This Month</div>
+          <div className='metrics-value'>{inr(totalInvestment.amount)}</div>
+          <div className='metrics-subtext'>
             {totalInvestment.amount > totalInvestment.limit ? (
-              <span className="color-green">
-                Invested extra{" "}
+              <span className='color-green'>
+                Invested extra{' '}
                 {inra(totalInvestment.limit - totalInvestment.amount)}
               </span>
             ) : (
-              <span className="color-red">
-                Invest {inra(totalInvestment.limit - totalInvestment.amount)}{" "}
+              <span className='color-red'>
+                Invest {inra(totalInvestment.limit - totalInvestment.amount)}{' '}
                 more
               </span>
             )}
           </div>
         </div>
-        <div className="metrics-container">
-          <div className="metrics-heading">Most Spent On</div>
-          <div className="metrics-value">{mostOverspentSpentCategory.name}</div>
-          <div className="metrics-subtext">
+        <div className='metrics-container'>
+          <div className='metrics-heading'>Most Spent On</div>
+          <div className='metrics-value'>{mostOverspentSpentCategory.name}</div>
+          <div className='metrics-subtext'>
             {mostOverspentSpentCategory.amount >
             mostOverspentSpentCategory.limit ? (
               <UpArrow
-                className="metric-icon icon-red"
-                height="20px"
-                width="20px"
+                className='metric-icon icon-red'
+                height='20px'
+                width='20px'
               />
             ) : (
               <DownArrow
-                className="metric-icon icon-green"
-                height="20px"
-                width="20px"
+                className='metric-icon icon-green'
+                height='20px'
+                width='20px'
               />
             )}
             {round(
@@ -111,22 +111,22 @@ const Metrics = ({ data, monthWiseData }) => {
             %
           </div>
         </div>
-        <div className="metrics-container">
-          <div className="metrics-heading">Least Invested On</div>
-          <div className="metrics-value">{mostLeastInvestedCategory.name}</div>
-          <div className="metrics-subtext">
+        <div className='metrics-container'>
+          <div className='metrics-heading'>Least Invested On</div>
+          <div className='metrics-value'>{mostLeastInvestedCategory.name}</div>
+          <div className='metrics-subtext'>
             {mostLeastInvestedCategory.amount <
             mostLeastInvestedCategory.limit ? (
               <UpArrow
-                className="metric-icon icon-red"
-                height="20px"
-                width="20px"
+                className='metric-icon icon-red'
+                height='20px'
+                width='20px'
               />
             ) : (
               <DownArrow
-                className="metric-icon icon-green"
-                height="20px"
-                width="20px"
+                className='metric-icon icon-green'
+                height='20px'
+                width='20px'
               />
             )}
             {round(
@@ -138,11 +138,11 @@ const Metrics = ({ data, monthWiseData }) => {
             %
           </div>
         </div>
-        <div className="metrics-container">
-          <div className="metrics-heading">
+        <div className='metrics-container'>
+          <div className='metrics-heading'>
             Expenditure - This Month vs Prev
           </div>
-          <div className="metrics-value">
+          <div className='metrics-value'>
             {rounda(
               ((thisMonthExpenditure.amount - prevMonthExpenditure.amount) *
                 100) /
@@ -150,32 +150,32 @@ const Metrics = ({ data, monthWiseData }) => {
             )}
             %
           </div>
-          <div className="metrics-subtext">
+          <div className='metrics-subtext'>
             {thisMonthExpenditure.amount > prevMonthExpenditure.amount ? (
               <>
                 <UpArrow
-                  className="metric-icon icon-red"
-                  height="20px"
-                  width="20px"
-                />{" "}
+                  className='metric-icon icon-red'
+                  height='20px'
+                  width='20px'
+                />{' '}
                 Went Up
               </>
             ) : (
               <>
                 <DownArrow
-                  className="metric-icon icon-green"
-                  height="20px"
-                  width="20px"
-                />{" "}
+                  className='metric-icon icon-green'
+                  height='20px'
+                  width='20px'
+                />{' '}
                 Came Down
               </>
             )}
           </div>
         </div>
 
-        <div className="metrics-container">
-          <div className="metrics-heading">Investment - This Month vs Prev</div>
-          <div className="metrics-value">
+        <div className='metrics-container'>
+          <div className='metrics-heading'>Investment - This Month vs Prev</div>
+          <div className='metrics-value'>
             {rounda(
               ((thisMonthInvestment.amount - prevMonthInvestment.amount) *
                 100) /
@@ -183,23 +183,23 @@ const Metrics = ({ data, monthWiseData }) => {
             )}
             %
           </div>
-          <div className="metrics-subtext">
+          <div className='metrics-subtext'>
             {thisMonthInvestment.amount < prevMonthInvestment.amount ? (
               <>
                 <UpArrow
-                  className="metric-icon icon-green"
-                  height="20px"
-                  width="20px"
-                />{" "}
+                  className='metric-icon icon-green'
+                  height='20px'
+                  width='20px'
+                />{' '}
                 Went Up
               </>
             ) : (
               <>
                 <DownArrow
-                  className="metric-icon icon-red"
-                  height="20px"
-                  width="20px"
-                />{" "}
+                  className='metric-icon icon-red'
+                  height='20px'
+                  width='20px'
+                />{' '}
                 Came Down
               </>
             )}
