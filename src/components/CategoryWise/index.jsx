@@ -2,13 +2,20 @@ import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
 import { useState } from 'react';
 import Drawer from '../Drawer';
-import { getExpenditureOption, getInvestmentOption } from './chartOptions';
+import {
+  expenseDrawerContent,
+  getExpenditureOption,
+  getInvestmentOption,
+  investDrawerContent,
+} from './chartOptions';
+import './index.css';
 
 const CategoryWise = ({ data: { spend, invest } }) => {
   const [isDrawerOpen, setIsDrawerOpen] = useState({
     expense: false,
     invest: false,
   });
+  const [selectedIndex, setSelectedIndex] = useState(null);
 
   const handleToggleExpenseDrawer = () => {
     setIsDrawerOpen((prev) => ({ ...prev, expense: !prev.expense }));
@@ -17,13 +24,15 @@ const CategoryWise = ({ data: { spend, invest } }) => {
     setIsDrawerOpen((prev) => ({ ...prev, invest: !prev.invest }));
   };
 
-  const { expenditureOption, expenditureChildren } = getExpenditureOption(
+  const expenditureOption = getExpenditureOption(
     spend,
-    handleToggleExpenseDrawer
+    handleToggleExpenseDrawer,
+    setSelectedIndex
   );
-  const { investmentOption, investmenteChildren } = getInvestmentOption(
+  const investmentOption = getInvestmentOption(
     invest,
-    handleToggleInvestDrawer
+    handleToggleInvestDrawer,
+    setSelectedIndex
   );
 
   return (
@@ -49,8 +58,8 @@ const CategoryWise = ({ data: { spend, invest } }) => {
           setIsDrawerOpen({ expense: false, invest: false });
         }}
       >
-        {isDrawerOpen.expense && expenditureChildren}
-        {isDrawerOpen.invest && investmenteChildren}
+        {isDrawerOpen.expense && expenseDrawerContent(spend, selectedIndex)}
+        {isDrawerOpen.invest && investDrawerContent(invest, selectedIndex)}
       </Drawer>
     </div>
   );

@@ -1,0 +1,12 @@
+.expense-heading {
+  margin: 1.5rem 0;
+}
+.expense-summary {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.expense-result {
+  margin: 0.2rem 0;
+}

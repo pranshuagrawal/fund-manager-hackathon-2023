@@ -1,19 +1,19 @@
-import "./App.css";
-import { useState, useEffect } from "react";
-import CategoryWise from "./components/CategoryWise";
-import TimeWise from "./components/TimeWise";
-import Metrics from "./components/Metrics";
-import ManageCategories from "./components/ManageCategories";
-import AddExpense from "./components/AddExpense";
+import './App.css';
+import { useState, useEffect } from 'react';
+import CategoryWise from './components/CategoryWise';
+import TimeWise from './components/TimeWise';
+import Metrics from './components/Metrics';
+import ManageCategories from './components/ManageCategories';
+import AddExpense from './components/AddExpense';
 
-import { categoryWiseData, monthWiseData, limits, dailyData } from "./data";
+import { categoryWiseData, monthWiseData, limits, dailyData } from './data';
 
 import {
   addCategory,
   fetchCategories,
   addTransactions,
   fetchTransactions,
-} from "./db";
+} from './db';
 
 function App() {
   const [categories, setCategories] = useState({
@@ -51,7 +51,7 @@ function App() {
         setCategories((d) => ({
           loading: false,
           data: [],
-          error: "Unable to fetch categories",
+          error: 'Unable to fetch categories',
         }));
       });
   };
@@ -80,7 +80,7 @@ function App() {
         setTransactions((d) => ({
           loading: false,
           data: [],
-          error: "Unable to fetch transactions",
+          error: 'Unable to fetch transactions',
         }));
       });
   };
@@ -90,12 +90,12 @@ function App() {
   }, []);
 
   return (
-    <div className="container">
-      <div className="container-cta">
-        <div className="logo-container">
+    <div className='container'>
+      <div className='container-cta'>
+        <div className='logo-container'>
           <img
-            className="logo"
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Paytm_payments_bank.svg/2560px-Paytm_payments_bank.svg.png"
+            className='logo'
+            src='https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Paytm_payments_bank.svg/2560px-Paytm_payments_bank.svg.png'
           />
         </div>
         <div>
@@ -106,13 +106,13 @@ function App() {
           />
         </div>
       </div>
-      <div className="container-inner">
+      <div className='container-inner'>
         <Metrics data={categoryWiseData} monthWiseData={monthWiseData} />
       </div>
-      <div className="container-inner">
+      <div className='container-inner'>
         <CategoryWise data={categoryWiseData} />
       </div>
-      <div className="container-inner">
+      <div className='container-inner'>
         <TimeWise
           historicalData={dailyData}
           data={monthWiseData}
