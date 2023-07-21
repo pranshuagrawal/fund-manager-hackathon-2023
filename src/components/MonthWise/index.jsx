@@ -1,6 +1,11 @@
 const MonthWise = () => {
 return (
-        <h1>Month Wise</h1>
+        <div className="row">
+            <div className="column">
+                <div className="heading">Month Wise Expenditure and Investment</div>
+                <div className="graph-container">Graph</div>
+            </div>
+        </div>
     )
 }
 
