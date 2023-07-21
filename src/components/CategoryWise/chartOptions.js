@@ -59,13 +59,23 @@ export const getExpenditureOption = (
         dataLabels: [
           {
             enabled: true,
-            inside: true,
+            // inside: true,
             style: {
               fontSize: '16px',
             },
+            useHTML: true,
+            formatter: function (v) {
+              const value = this.point.y;
+              const limit = this.point.limit;
+              return `<img src="${
+                value < limit
+                  ? "https://cdn-icons-png.flaticon.com/512/5712/5712056.png"
+                  : "https://cdn-icons-png.flaticon.com/512/5712/5712112.png"
+              }" style="height: 40px; width: 40px; background: #fff; border-radius: 50%;" />`;
+            },
           },
         ],
-        data: spend.map((item) => item.amount),
+        data: spend.map((item) => ({ y: item.amount, limit: item.limit })),
       },
     ],
     exporting: {
@@ -128,13 +138,22 @@ export const getInvestmentOption = (
         dataLabels: [
           {
             enabled: true,
-            inside: true,
             style: {
               fontSize: '16px',
             },
+            useHTML: true,
+            formatter: function (v) {
+              const value = this.point.y;
+              const limit = this.point.limit;
+              return `<img src="${
+                value > limit
+                  ? "https://cdn-icons-png.flaticon.com/512/5712/5712056.png"
+                  : "https://cdn-icons-png.flaticon.com/512/5712/5712112.png"
+              }" style="height: 40px; width: 40px; background: #fff; border-radius: 50%;" />`;
+            },
           },
         ],
-        data: invest.map((item) => item.amount),
+        data: invest.map((item) => ({ y: item.amount, limit: item.limit })),
       },
     ],
     plotOptions: {
