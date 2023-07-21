@@ -5,12 +5,30 @@ body {
   font-family: 'Open Sans', sans-serif;
 }
 
+.container-cta {
+  display: flex;
+  justify-content: flex-end;
+}
+
+button.link {
+  background-color: transparent;
+  background: transparent;
+  padding: 10px;
+  border:0;
+  outline: 0;
+  color: #5675e8;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
 .row {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
   padding: 10px;
   gap: 20px;
+  
 }
 
 .column {
