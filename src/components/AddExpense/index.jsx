@@ -3,7 +3,7 @@ import "./index.css";
 
 const AddExpense = ({ categories }) => {
   const { spend } = categories;
-  const [isFocused, setIsFocused] = useState(false);
+  const [, setIsFocused] = useState(false);
 
   const [inputValue, setInputValue] = useState("");
   const [error, setError] = useState("");
@@ -12,10 +12,9 @@ const AddExpense = ({ categories }) => {
     let value = event.target.value;
 
     value = value.replace(/[^\d-]/g, "");
-
     setInputValue(value);
 
-    if (!/^\d*$/.test(value)) {
+    if (!/^[1-9]\d*$/.test(value)) {
       setError("Please enter a valid positive number.");
     } else {
       setError("");
