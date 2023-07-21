@@ -48,7 +48,7 @@ const DailyWise = ({data, historicalData, limits}) => {
         </div>
       </div>
       <div className="column">
-        <div className="heading">Daily Investment</div>
+        <div className="heading">Historical Expenditure and Investment</div>
         <div className="graph-container"><Historical data={data} limits={limits} /></div>
       </div>
     </div>

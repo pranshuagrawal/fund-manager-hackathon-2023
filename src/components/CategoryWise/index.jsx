@@ -35,13 +35,14 @@ const CategoryWise = ({ data: { spend, invest } }) => {
     ],
     series: [
       {
-        color: 'rgba(158, 159, 163, 0.5)',
+        color: 'rgba(88, 105, 241, 0.3)',
         pointPlacement: -0.2,
         linkedTo: 'main',
         data: spend.map((item) => item.amount),
         name: 'expenditure',
       },
       {
+        color: '#5675e8',
         name: 'limit',
         id: 'main',
         dataLabels: [
@@ -59,12 +60,14 @@ const CategoryWise = ({ data: { spend, invest } }) => {
     exporting: {
       allowHTML: true,
     },
+    credits: {
+      enabled: false
+    }
   };
   const investmentOption = {
     chart: {
       type: 'column',
     },
-    // Custom option for templates
     spend,
     title: {
       text: null,
@@ -94,13 +97,14 @@ const CategoryWise = ({ data: { spend, invest } }) => {
     ],
     series: [
       {
-        color: 'rgba(158, 159, 163, 0.5)',
+        color: 'rgba(88, 105, 241, 0.3)',
         pointPlacement: -0.2,
         linkedTo: 'main',
         data: invest.map((item) => item.amount),
         name: 'expenditure',
       },
       {
+        color: '#5675e8',
         name: 'limit',
         id: 'main',
         dataLabels: [
@@ -118,6 +122,9 @@ const CategoryWise = ({ data: { spend, invest } }) => {
     exporting: {
       allowHTML: true,
     },
+    credits: {
+      enabled: false
+    }
   };
   return (
     <div className='row'>

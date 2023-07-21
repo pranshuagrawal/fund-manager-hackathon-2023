@@ -17,7 +17,7 @@ body {
   display: flex;
   flex-direction: column;
   flex: 1;
-  min-height: 200px;
+  min-height: 50px;
   /* border: 1px solid #5675e8; */
   background-color: #fff;
   border-radius: 8px;
@@ -25,6 +25,66 @@ body {
   -moz-box-shadow: -1px 2px 5px 1px rgba(235,235,235,1);
   box-shadow: -1px 2px 5px 1px rgba(235,235,235,1);
   padding: 20px;
+}
+
+.color-green {
+  color: #6ac6d0 !important;
+}
+
+.color-red {
+  color: #f78485 !important;
+}
+
+.icon-green path {
+  fill: #6ac6d0 !important;
+}
+
+.icon-red path {
+  fill: #f78485 !important;
+}
+
+.metrics {
+  display: flex;
+  flex-direction: row;
+  max-width: 60vw;
+}
+
+.metrics-container {
+  border-right: 1px solid #f3f5f6;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  padding-left: 40px;
+}
+
+.metrics-container:last-child {
+  border-right: 0px;
+}
+
+.metric-icon {
+  margin-right: 5px;
+}
+
+.metrics-heading {
+  color: #a0b0c9;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.metrics-value {
+  color: #354b6c;
+  font-size: 30px;
+  font-weight: 500;
+}
+
+.metrics-subtext {
+  font-size: 14px;
+  color: #a0b0c9;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
 }
 
 .heading {
