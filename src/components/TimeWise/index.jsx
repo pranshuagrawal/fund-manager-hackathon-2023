@@ -1,9 +1,10 @@
+import dayjs from 'dayjs';
 import Highcharts from 'highcharts'
 import HighchartsReact from 'highcharts-react-official'
 import Historical from './Historical';
 const DailyWise = ({data, historicalData, limits}) => {
-  const categories = data.spend.map(el => el.date)
-  const values = data.spend.map(el => el.amount)
+  const categories = historicalData.spend.map(el => dayjs(el.date).format('DD MMM YY'))
+  const values = historicalData.spend.map(el => el.amount)
   const options = {
     chart: {
         type: 'spline'
@@ -48,7 +49,7 @@ const DailyWise = ({data, historicalData, limits}) => {
       </div>
       <div className="column">
         <div className="heading">Daily Investment</div>
-        <div className="graph-container"><Historical data={historicalData} limits={limits} /></div>
+        <div className="graph-container"><Historical data={data} limits={limits} /></div>
       </div>
     </div>
   )
