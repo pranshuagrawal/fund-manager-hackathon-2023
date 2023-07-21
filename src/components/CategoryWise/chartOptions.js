@@ -205,7 +205,7 @@ export const investDrawerContent = (investList, index) => {
   const invest = investList?.[index];
   return (
     <>
-      <h2 className='expense-heading'>{invest?.name} Expense Summary</h2>
+      <h2 className='expense-heading'>{invest?.name} Invest Summary</h2>
       <div className='expense-summary'>
         <div className='expense-summary-values'>
           <div>
