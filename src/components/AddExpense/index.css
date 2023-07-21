@@ -1,0 +1,36 @@
+.addexpense-container {
+    padding: 2rem;
+}
+
+.addexpense-heading {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 30px;
+}
+
+.addexpense-input {
+    border: 1px solid red;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    outline: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+}
+
+.custom-select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    outline: none;    
+    opacity: 0.8;
+    margin: 2rem 0;
+    transition: box-shadow 0.3s ease;
+}
+
+.custom-select:focus {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    opacity: 1;
+  }

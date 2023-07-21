@@ -1,4 +1,3 @@
-import dayjs from "dayjs";
 import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
 
@@ -6,7 +5,7 @@ const Historical = ({ data, limits }) => {
   const { invest, spend } = data;
 
   const xAxisData = invest.map(item => {
-    return dayjs(item?.date).format('DD MMM YY');
+    return item?.month;
   })
 
   const yAxisDataInvest = invest.map(item => {

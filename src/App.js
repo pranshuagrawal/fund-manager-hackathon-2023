@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import AddExpense from './components/AddExpense';
 import './App.css';
 
 import CategoryWise from './components/CategoryWise';
@@ -31,6 +32,9 @@ function App() {
         <Drawer isOpen={isDrawerOpen} onClose={() => setIsDrawerOpen(false)}>
           <h2>Drawer Content</h2>
           <p>This is the content of the drawer.</p>
+          <div className='isko drawer me daalna h'>
+            <AddExpense categories={categoryWiseData} />
+          </div>
         </Drawer>
       </div>
     </div>
