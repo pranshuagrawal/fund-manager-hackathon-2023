@@ -1,4 +1,5 @@
 import "./App.css";
+import AddExpense from "./components/AddExpense";
 
 import CategoryWise from "./components/CategoryWise";
 import TimeWise from "./components/TimeWise";
@@ -18,6 +19,9 @@ function App() {
           data={monthWiseData}
           limits={limits}
         />
+      </div>
+      <div className="isko drawer me daalna h">
+        <AddExpense categories={categoryWiseData} />
       </div>
     </div>
   );
