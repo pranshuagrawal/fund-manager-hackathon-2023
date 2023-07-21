@@ -1,6 +1,6 @@
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
-const CategoryWise = ({ data: { spend, invest }, limits }) => {
+const CategoryWise = ({ data: { spend, invest } }) => {
   const expenditureOption = {
     chart: {
       type: 'column',
