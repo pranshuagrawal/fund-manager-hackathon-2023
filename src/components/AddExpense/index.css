@@ -21,10 +21,11 @@
 
 .custom-select {
     padding: 10px;
+    max-width: 13.7rem;
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 16px;
-    outline: none;    
+    outline: none;
     opacity: 0.8;
     margin: 2rem 0;
     transition: box-shadow 0.3s ease;
@@ -33,4 +34,42 @@
 .custom-select:focus {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
     opacity: 1;
-  }
+}
+
+.addexpense-button {
+    padding: 10px 20px;
+    background-color: #354b6c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transition: box-shadow 0.3s ease;
+}
+
+.addexpense-button:hover {
+    animation: pulse 0.5s infinite;
+}
+
+.true {
+    cursor: not-allowed;
+    background-color: #ccc;
+    box-shadow: none;
+    opacity: 0.6;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+      

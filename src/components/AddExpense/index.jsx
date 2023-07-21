@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import "./index.css";
 
 const AddExpense = ({ categories }) => {
@@ -6,6 +6,7 @@ const AddExpense = ({ categories }) => {
   const [, setIsFocused] = useState(false);
 
   const [inputValue, setInputValue] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("");
   const [error, setError] = useState("");
 
   const handleInputChange = (event) => {
@@ -21,7 +22,28 @@ const AddExpense = ({ categories }) => {
     }
   };
 
+  const submitHandler = () => {
+    const payload = {
+      amount: inputValue,
+      category: selectedCategory
+    }
+    console.log('payload', payload);
+  }
+
+  const handleCategoryChange = (event) => {
+    let value = event.target.value;
+    setSelectedCategory(value);
+  };
+
   const spendCategories = spend.map((el) => el.name);
+
+  const isButtonDisabled = useMemo(() => {
+    if (!selectedCategory || !inputValue || error)
+      return true;
+    return false;
+  }, [selectedCategory, inputValue, error]);
+
+  console.log('isButtonDisabled', isButtonDisabled);
 
   return (
     <>
@@ -46,12 +68,16 @@ const AddExpense = ({ categories }) => {
             className="custom-select"
             onFocus={() => setIsFocused(true)}
             onBlur={() => setIsFocused(false)}
+            onChange={handleCategoryChange}
           >
             <option value="">--Please choose a category--</option>
             {spendCategories.map((item) => {
               return <option value={item}>{item}</option>;
             })}
           </select>
+        </div>
+        <div className="addexpense-submit">
+          <button onClick={submitHandler} className={`addexpense-button ${isButtonDisabled}`} disabled={isButtonDisabled}>Add Expense</button>
         </div>
       </div>
     </>
