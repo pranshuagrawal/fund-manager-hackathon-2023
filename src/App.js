@@ -94,12 +94,13 @@ function App() {
       <div className='container-cta'>
         <div className='logo-container'>
           <img
-            className='logo'
-            src='https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Paytm_payments_bank.svg/2560px-Paytm_payments_bank.svg.png'
+            className="logo"
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Paytm_payments_bank.svg/2560px-Paytm_payments_bank.svg.png"
+            alt='paytm logo'
           />
         </div>
         <div>
-          <AddExpense categories={categoryWiseData} />
+          <AddExpense categories={categories} />
           <ManageCategories
             addCategoryFn={addCategoryFn}
             categories={categories}

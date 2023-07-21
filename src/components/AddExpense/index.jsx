@@ -1,19 +1,30 @@
 import { useMemo, useState } from "react";
+import { AddIcon } from "../../icons/icons";
 import { addTransactions } from "../../db";
 import Drawer from "../Drawer";
 import "./index.css";
 
 const AddExpense = ({ categories }) => {
-  const { spend } = categories;
   const [, setIsFocused] = useState(false);
 
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [isAddCategoryOpen, setIsAddCategoryOpen] = useState(false);
   const [inputValue, setInputValue] = useState("");
-  const [selectedCategory, setSelectedCategory] = useState("--Please choose a category--");
+  const [selectedCategory, setSelectedCategory] = useState(
+    "--Please choose a category--"
+  );
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [responseMsg, setResponseMsg] = useState('');
+  const [responseMsg, setResponseMsg] = useState("");
+  const [selectedDate, setSelectedDate] = useState();
+
+  const resetStates = () => {
+    setError("");
+    setInputValue("");
+    setSelectedCategory("--Please choose a category--");
+    setIsLoading("");
+    setResponseMsg("");
+  }
 
   const handleInputChange = (event) => {
     let value = event.target.value;
@@ -35,41 +46,50 @@ const AddExpense = ({ categories }) => {
   const submitHandler = () => {
     const payload = {
       amount: inputValue,
-      category: selectedCategory
-    }
+      category: selectedCategory,
+      date: selectedDate
+    };
     setIsLoading(true);
     addTransactions(payload)
       .then((response) =>  {
         setIsLoading(false);
-        setResponseMsg('Expense Added')
+        setResponseMsg('Expense Added');
+
+        setTimeout(() => {
+          resetStates();
+        }, 3000);
       })
       .catch((error) => {
         setIsLoading(false);
-        setResponseMsg('Something Went Wrong', error);
+        setResponseMsg('Something Went Wrong');
       });
   }
 
   const handleCategoryChange = (event) => {
-    let value = event.target.value;
+    const value = event.target.value;
     setSelectedCategory(value);
   };
 
-  const spendCategories = spend.map((el) => el.name);
-
   const isButtonDisabled = useMemo(() => {
-    if (!selectedCategory || selectedCategory === "--Please choose a category--" || !inputValue || error)
+    if (
+      !selectedCategory ||
+      selectedCategory === "--Please choose a category--" ||
+      !inputValue ||
+      error
+    )
       return true;
     return false;
   }, [selectedCategory, inputValue, error]);
 
+  const dateChangeHandler = (event) => {
+    const value = event.target.value;
+    setSelectedDate(value);
+  }
+
   const newExpenseHandler = () => {
     setIsAddCategoryOpen((s) => !s);
-    setError("");
-    setInputValue("");
-    setSelectedCategory("--Please choose a category--");
-    setIsLoading("");
-    setResponseMsg("");
-  }
+    resetStates();
+  };
 
   return (
     <>
@@ -79,11 +99,15 @@ const AddExpense = ({ categories }) => {
       <Drawer isOpen={isDrawerOpen} onClose={() => setIsDrawerOpen(false)}>
         <div className="addexpense-container">
           <div className="addexpense-heading">Add Expense</div>
-          <div className="addexpense-plus" onClick={newExpenseHandler}>
-            + New Expense
+          <div className="addexpense-header">
+            <button className="link pr0" onClick={newExpenseHandler}>
+              <AddIcon className="icon-blue" height="12px" width="12px" /> New
+              Expense
+            </button>
           </div>
-          {isAddCategoryOpen && (<div>
-            <div className="input-label">Amount</div>
+          {isAddCategoryOpen && (
+            <div>
+              <div className="input-label">Amount</div>
               <input
                 type="text"
                 id="amount"
@@ -96,8 +120,8 @@ const AddExpense = ({ categories }) => {
               {error && (
                 <p style={{ color: "red", margin: "5px 0" }}>{error}</p>
               )}
-            
-            <div className="input-label mt15">Category Type</div>
+
+              <div className="input-label mt15">Category Type</div>
               <select
                 name="categories"
                 id="category-select"
@@ -107,22 +131,31 @@ const AddExpense = ({ categories }) => {
                 onChange={handleCategoryChange}
               >
                 <option value="">{selectedCategory}</option>
-                {spendCategories.map((item) => {
-                  return <option value={item}>{item}</option>;
+                {categories.data.map((item) => {
+                  return <option value={item.name}>{item.name}</option>;
                 })}
               </select>
-            
-            <div className="addexpense-submit">
-              <button
-                onClick={submitHandler}
-                className={`primary mt15 ${isButtonDisabled}`}
-                disabled={isButtonDisabled}
-              >
-                {isLoading ? "Submitting..." : "Add Expense"}
-              </button>
-              {responseMsg && <h2>{responseMsg}</h2>}
+
+              <div className="input-label mt15">Select Date</div>
+              <input
+                type="date"
+                id="date"
+                name="date"
+                onChange={dateChangeHandler}
+                value={selectedDate}
+              />
+              <div className="addexpense-submit">
+                <button
+                  onClick={submitHandler}
+                  className={`primary mt15 ${isButtonDisabled}`}
+                  disabled={isButtonDisabled}
+                >
+                  {isLoading ? "Submitting..." : "Add Expense"}
+                </button>
+                {responseMsg && <h5>{responseMsg}</h5>}
+              </div>
             </div>
-          </div>)}
+          )}
         </div>
       </Drawer>
     </>
